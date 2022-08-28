@@ -1,0 +1,163 @@
+/*---ПОДКЛЮЧЕНИЕ-ОБНУЛЯЮЩЕГО-СТИЛЯ--------------*/
+@import "nuls.scss";
+
+/*---ПОДКЛЮЧЕНИЕ-ШРИФТОВ------------------------*/
+@font-face {
+	font-family: "PlayfairDisplay Bold";
+	src: url("../fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: 600;
+}
+
+/*---ИСПОЛЬЗУЕМЫЕ-ЦВЕТА-------------------------*/
+$accent: #998431;
+$dark: #282828;
+$black: #000;
+$white: #fff;
+$grey: #7b7b7b;
+$beige: #E6E3C4;
+
+/*---ОСНОВНОЕ-----------------------------------*/
+body {
+	background: url("../img/images/first-screen/first-screen-bgc.png");
+	font-family: "Montserrat Regular", sans-serif;
+	color: $white;
+}
+
+/*---404----------------------------------------*/
+.page {
+	text-align: center;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 15px;
+}
+
+// Ограничивающий контейнер
+.page__container {
+	border: 3px solid;
+	border-image: linear-gradient(20deg, $accent 38%, $dark 65%);
+	border-image-slice: 1;
+	width: 800px;
+	height: 450px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 0 15px;
+	background: inherit;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+// Эффект стекла
+.page__container:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+  filter: blur(10px);
+}
+
+// Заголовок
+h1 {
+	color: $accent;
+	font-size: 120px;
+	margin-bottom: 30px;
+	font-weight: 800;
+	letter-spacing: 0.5px;
+}
+
+// Параграфы
+p {
+	color: $black;
+	font-size: 20px;
+	margin-bottom: 15px;
+	line-height: 150%;
+	letter-spacing: 0.5px;
+}
+
+// Текст
+.text {
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+// Инфо
+.info {
+	color: $black;
+}
+
+// Кнопка
+button.button-yellow {
+	background-color: transparent;
+	padding: 15px 30px;
+	text-transform: uppercase;
+	color: $white;
+	font-family: "Montserrat Medium";
+	font-size: 16px;
+	letter-spacing: 5%;
+	transition: all 0.3s ease 0s;
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+	border: 2px solid $accent;
+	&::before, &::after{
+		position: absolute;
+		content: '';
+		width: 100%;
+		height: 100%;
+		background-color: $accent;
+		opacity: 0.4;
+		top: 0;
+		right: 0;
+		transition: all 0.5s ease 0s;
+		z-index: -1;
+	}
+	&::after {
+		opacity: 1;
+		background-color: $accent;
+		transition: all 0.5s ease 0.2s;
+	}
+	&:hover{
+		&::before, &::after{
+			right: -100%;
+		}
+		color: $white;
+	}
+}
+
+// Брейкпоинты
+@media (max-width: 1000px) {
+	.page__container {
+		width: 600px;
+		height: 600px;
+	}
+}
+@media (max-width: 767px) {
+	.page__container {
+		width: 400px;
+		height: 600px;
+	}
+}
+@media (max-width: 540px) {
+	.page__container {
+		width: 300px;
+		height: 550px;
+	}
+}
+@media (max-width: 400px) {
+	.page__container {
+		width: 260px;
+		height: 550px;
+	}
+}
